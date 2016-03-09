@@ -22,11 +22,14 @@ void* helloWorld();
  */
 int main(int argc, char** argv) 
 {
+    //Creation de 2 threads
+    
     pthread_t a;
     pthread_create(&a, NULL, helloWorld, (void*)pthread_self());
     pthread_t b;
     pthread_create(&b, NULL, helloWorld, (void*)pthread_self());
     pthread_join(a,NULL);
+    
     printf("%lu\n",pthread_self());
     
     return (EXIT_SUCCESS);
