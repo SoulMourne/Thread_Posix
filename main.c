@@ -23,16 +23,20 @@ void* helloWorld();
 int main(int argc, char** argv) 
 {
     pthread_t a;
-    pthread_create(&a, NULL, helloWorld, NULL);
+    pthread_create(&a, NULL, helloWorld, pthread_self());
+    pthread_t b;
+    pthread_create(&b, NULL, helloWorld, pthread_self());
+/*
     helloWorld();
+*/
+    printf("%lu\n",pthread_self());
     pthread_join(a,NULL);
-    
     
     return (EXIT_SUCCESS);
 }
 
-void* helloWorld()
+void* helloWorld(void* args)
 {
-    printf("Hello from the %d side !\n", (int)pthread_self());
+    printf("Hello from the %lu side !\n", (long unsigned int)args);
 }
 
