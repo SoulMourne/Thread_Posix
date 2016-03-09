@@ -22,7 +22,7 @@ struct thread_args
     char hello[256];
 };
 
-void hello();
+void* helloWorld();
 
 /*
  * 
@@ -32,14 +32,17 @@ int main(int argc, char** argv)
 /*
     struct thread_args a;
 */
+    pthread_t a;
+    pthread_create(&a, NULL, helloWorld, NULL);
+    helloWorld();
+    pthread_join(a,NULL);
     
-    pthread_create(&hello, &a);
     
     return (EXIT_SUCCESS);
 }
 
-void* hello()
+void* helloWorld()
 {
-    printf("Hello");
+    printf("Hello\n");
 }
 
