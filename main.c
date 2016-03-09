@@ -33,6 +33,6 @@ int main(int argc, char** argv)
 
 void* helloWorld()
 {
-    printf("Hello\n");
+    printf("Hello from the %d side !\n", (int)pthread_self());
 }
 
