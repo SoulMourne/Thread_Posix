@@ -28,6 +28,8 @@ int main(int argc, char** argv)
     pthread_create(&a, NULL, helloWorld, (void*)pthread_self());
     pthread_t b;
     pthread_create(&b, NULL, helloWorld, (void*)pthread_self());
+    
+    //Synchro des threads
     pthread_join(a,NULL);
     
     printf("%lu\n",pthread_self());
