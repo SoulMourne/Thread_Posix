@@ -26,11 +26,8 @@ int main(int argc, char** argv)
     pthread_create(&a, NULL, helloWorld, pthread_self());
     pthread_t b;
     pthread_create(&b, NULL, helloWorld, pthread_self());
-/*
-    helloWorld();
-*/
-    printf("%lu\n",pthread_self());
     pthread_join(a,NULL);
+    printf("%lu\n",pthread_self());
     
     return (EXIT_SUCCESS);
 }
