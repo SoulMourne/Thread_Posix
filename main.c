@@ -29,13 +29,16 @@ void hello();
  */
 int main(int argc, char** argv) 
 {
+/*
     struct thread_args a;
+*/
+    
     pthread_create(&hello, &a);
     
     return (EXIT_SUCCESS);
 }
 
-void hello()
+void* hello()
 {
     printf("Hello");
 }
