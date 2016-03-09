@@ -15,13 +15,6 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-struct thread_args
-{
-    int toto;
-    float titi;
-    char hello[256];
-};
-
 void* helloWorld();
 
 /*
@@ -29,9 +22,6 @@ void* helloWorld();
  */
 int main(int argc, char** argv) 
 {
-/*
-    struct thread_args a;
-*/
     pthread_t a;
     pthread_create(&a, NULL, helloWorld, NULL);
     helloWorld();
