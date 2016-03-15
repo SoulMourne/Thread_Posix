@@ -67,14 +67,14 @@ void exercice2()
     int* i;
     int codeThread1 = 8;
     pthread_t a;
-    pthread_create(&a, NULL, sortieThread, codeThread1);
+    pthread_create(&a, NULL, sortieThread, (void*)codeThread1);
     pthread_join(a,(void**)&i);
     
     int* j;
     int codeThread2 = 3;
     pthread_t b;
-    pthread_create(&b, NULL, sortieThread, codeThread2);
-    pthread_join(a,(void**)&j);
+    pthread_create(&b, NULL, sortieThread, (void*)codeThread2);
+    pthread_join(b,(void**)&j);
     
     printf("Thread 1 = %d\nThread 2 = %d\n",i,j);
 
@@ -91,11 +91,14 @@ void* sortieThread(void* args)
 
 void exercice4()
 {
+    int* i = malloc(sizeof(int));
+    *i=0;
+
     pthread_t a;
-    pthread_create(&a, NULL, &incrementation,NULL);
+    pthread_create(&a, NULL, incrementation,(void*)i);
 
     pthread_t b;
-    pthread_create(&b,NULL,&incrementation,NULL);
+    pthread_create(&b,NULL,incrementation,(void*)i);
 
     pthread_join(a,NULL);
     pthread_join(b,NULL);
@@ -103,12 +106,14 @@ void exercice4()
 
 void* incrementation(void* arg)
 {
-    int i = (int)arg;
+    int* i;
+    i = arg;
+    printf("%d\n", *i);
 
     int j;
     for (j=0; j<10000; j++)
     {
-        i++;
-        printf("%d\n", i);
+        *i = *i+1;
+        printf("%d\n", *i);
     }
 }
