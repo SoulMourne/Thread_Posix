@@ -113,7 +113,15 @@ void* incrementation(void* arg)
     int j;
     for (j=0; j<10000; j++)
     {
-        *i = *i+1;
-        printf("%d\n", *i);
+        if (pthread_mutex_lock(i) == 0)
+        {
+            *i = *i+1;
+            printf("%d\n", *i);
+            pthread_mutex_unlock(i);
+        }
+        else
+        {
+            j--;
+        }
     }
 }
