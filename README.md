@@ -1,7 +1,7 @@
 # TP THREADS POSIX
 Team : Goodwin Jean-Paul & Ahmed Sahim
 
-Ce readme contient le compte rendu des exercices de la partie TD
+Ce readme contient le compte rendu des exercices de la partie TD et certaines questions de la partie TP
 
 #Exercice 1
 
@@ -97,7 +97,9 @@ Call ls </br>
 </tr>
 </table>
 
-
+#2.3 Race Condition
+1) Avec Lock on a g=2 000 000 000 car les ressources des deux threads sont vérouillés, ainsi chaque thread doit allouer ses propres ressources.</br>
+2) Sans Lock on a g=1 044 000 000 (environ) , les threads sont en concurrence et allouent de la mémoire partagée.</br>
 
 
 
