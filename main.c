@@ -20,6 +20,9 @@ void exercice1();
 
 void exercice2();
 void* sortieThread(void* args);
+
+void exercice4();
+void* incrementation(void* arg);
 /*
  * 
  */
@@ -29,6 +32,8 @@ int main(int argc, char** argv)
     exercice1();
     
     exercice2();
+
+    exercice4();
     
     return (EXIT_SUCCESS);
 }
@@ -80,4 +85,30 @@ void* sortieThread(void* args)
     int* i = malloc(sizeof(int));
     i = args;
     pthread_exit((void*)i);
+}
+
+/* EXERCICE 4 */
+
+void exercice4()
+{
+    pthread_t a;
+    pthread_create(&a, NULL, &incrementation,NULL);
+
+    pthread_t b;
+    pthread_create(&b,NULL,&incrementation,NULL);
+
+    pthread_join(a,NULL);
+    pthread_join(b,NULL);
+}
+
+void* incrementation(void* arg)
+{
+    int i = (int)arg;
+
+    int j;
+    for (j=0; j<10000; j++)
+    {
+        i++;
+        printf("%d\n", i);
+    }
 }
