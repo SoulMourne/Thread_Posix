@@ -18,6 +18,8 @@
 void* helloWorld();
 void exercice1();
 
+void exercice2();
+void* sortieThread(void* args);
 /*
  * 
  */
@@ -26,8 +28,12 @@ int main(int argc, char** argv)
     printf("--------- exercice 1 -----------\n");
     exercice1();
     
+    exercice2();
+    
     return (EXIT_SUCCESS);
 }
+
+/* EXERCICE 1*/
 
 void* helloWorld(void* args)
 {
@@ -46,4 +52,32 @@ void exercice1()
     pthread_join(b,NULL);
     
     printf("%lu\n",pthread_self());
+}
+
+
+/* EXERCICE 2*/
+
+void exercice2()
+{
+    int* i;
+    int codeThread1 = 8;
+    pthread_t a;
+    pthread_create(&a, NULL, sortieThread, (void*)codeThread1);
+    pthread_join(a,(void**)&i);
+    
+    int* j;
+    int codeThread2 = 3;
+    pthread_t b;
+    pthread_create(&b, NULL, sortieThread, (void*)codeThread2);
+    pthread_join(a,(void**)&j);
+    
+    printf("Thread 1 = %d\nThread 2 = %d\n",i,j);
+
+}
+
+void* sortieThread(void* args)
+{
+    int* i = malloc(sizeof(int));
+    i = (int)args;
+    pthread_exit((void*)i);
 }
