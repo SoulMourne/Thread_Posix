@@ -62,13 +62,13 @@ void exercice2()
     int* i;
     int codeThread1 = 8;
     pthread_t a;
-    pthread_create(&a, NULL, sortieThread, (void*)codeThread1);
+    pthread_create(&a, NULL, sortieThread, codeThread1);
     pthread_join(a,(void**)&i);
     
     int* j;
     int codeThread2 = 3;
     pthread_t b;
-    pthread_create(&b, NULL, sortieThread, (void*)codeThread2);
+    pthread_create(&b, NULL, sortieThread, codeThread2);
     pthread_join(a,(void**)&j);
     
     printf("Thread 1 = %d\nThread 2 = %d\n",i,j);
@@ -78,6 +78,6 @@ void exercice2()
 void* sortieThread(void* args)
 {
     int* i = malloc(sizeof(int));
-    i = (int)args;
+    i = args;
     pthread_exit((void*)i);
 }
