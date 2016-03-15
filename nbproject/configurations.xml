@@ -36,6 +36,7 @@
       </toolsSet>
       <compileType>
         <cTool>
+          <architecture>2</architecture>
           <commandLine>-lpthread</commandLine>
         </cTool>
       </compileType>

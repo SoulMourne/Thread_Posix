@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Prog_Repartie
+PROJECTNAME=Thread_Posix
 
 # Active Configuration
 DEFAULTCONF=Debug
